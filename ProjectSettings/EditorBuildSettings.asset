@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: e68fae000e667ed43ac9216536bfab1d
+  - enabled: 1
+    path: Assets/Scenes/Pong-Clone.unity
+    guid: d9e04d49e5b41564d8d6369845218aa0

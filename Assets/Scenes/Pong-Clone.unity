@@ -411,7 +411,7 @@ GameObject:
   - component: {fileID: 714790996}
   m_Layer: 0
   m_Name: ball
-  m_TagString: Untagged
+  m_TagString: ball
   m_Icon: {fileID: -5765324120231101433, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -429,6 +429,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x_force: 150
   y_force: 15
+  correctionThreshold: 12.3
+  correctionAmount: 12.3
 --- !u!50 &714790997
 Rigidbody2D:
   serializedVersion: 4

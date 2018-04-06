@@ -7,6 +7,11 @@ public class BallController : MonoBehaviour {
     public float x_force = 100f;
     public float y_force = 10f;
 
+    // don't let the velocity in x fall below this amount
+    public float correctionThreshold = 12.3f;
+    // if it does, restore it to this amount
+    public float correctionAmount = 12.35f;
+
     private Rigidbody2D rBody;
 
 	// Use this for initialization
@@ -17,19 +22,19 @@ public class BallController : MonoBehaviour {
     public void Update()
     {
         float xVel = rBody.velocity.x;
-        if(xVel < 18 && xVel > -18 && xVel != 0)
+        if(xVel < correctionThreshold && xVel > -correctionThreshold && xVel != 0)
         {
             if(xVel > 0)
             {
-                rBody.velocity = new Vector2(20, rBody.velocity.y);
+                rBody.velocity = new Vector2(correctionAmount, rBody.velocity.y);
             }
             else if (xVel < 0)
             {
-                rBody.velocity = new Vector2(-20, rBody.velocity.y);
+                rBody.velocity = new Vector2(-correctionAmount, rBody.velocity.y);
             }
         }
-        Debug.Log("velocity before: " + xVel);
-        Debug.Log("Velocity after: " + rBody.velocity.x);
+        //Debug.Log("velocity before: " + xVel);
+        //Debug.Log("Velocity after: " + rBody.velocity.x);
     }
 
     private IEnumerator throwBall(float delay)
@@ -64,12 +69,20 @@ public class BallController : MonoBehaviour {
         }
     }
 
+    public void ResetBall(float delay)
+    {
+        rBody.velocity = new Vector2(0, 0);
+        transform.position = new Vector3(0, 0, 0);
+
+       StartCoroutine(throwBall(delay));
+    }
+
     public void ResetBall()
     {
         rBody.velocity = new Vector2(0, 0);
         transform.position = new Vector3(0, 0, 0);
 
-       StartCoroutine(throwBall(0.5f));
+        StartCoroutine(throwBall(0.5f));
     }
 
 }

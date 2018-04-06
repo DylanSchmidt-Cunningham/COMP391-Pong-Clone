@@ -290,6 +290,7 @@
     <Compile Include="Assets\Scripts\GameSetup.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />
     <Compile Include="Assets\Scripts\SideWalls.cs" />
+    <Compile Include="Assets\Scripts\StartGame.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\UI\Pixel Font - Tripfive\_README.txt" />
