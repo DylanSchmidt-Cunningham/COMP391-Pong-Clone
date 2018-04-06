@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-    [HideInInspector]
-    public int score = 0;
-
     public KeyCode up;
     public KeyCode down;
     public float speed = 10.0f;

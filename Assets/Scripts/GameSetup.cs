@@ -15,6 +15,7 @@ public class GameSetup : MonoBehaviour {
     public Transform Player2;
 
     public Transform net;
+    public Transform ball;
 	
 	void Start () {
         //set up walls
@@ -33,8 +34,17 @@ public class GameSetup : MonoBehaviour {
         Player1.position = new Vector3(mainCamera.ScreenToWorldPoint(new Vector3(50f, 0f, 0f)).x, 0f, 0f);
         Player2.position = new Vector3(mainCamera.ScreenToWorldPoint(new Vector3(Screen.width - 50f, 0f, 0f)).x, 0f, 0f);
 
-        // adjust the net
+        // find the screen's ratio compared to the assets and scale everything
         float screenToNetRatio = mainCamera.ScreenToWorldPoint(new Vector3(0f, Screen.height, 0f)).y / net.GetComponent<SpriteRenderer>().sprite.bounds.extents.y;
-        net.localScale = new Vector3(screenToNetRatio, screenToNetRatio, 0f);
+
+        net.localScale  = new Vector3(screenToNetRatio, screenToNetRatio, 0f);
+        ball.localScale = new Vector3(screenToNetRatio, screenToNetRatio, 0f);
+        ball.GetComponent<BallController>().x_force *= screenToNetRatio;
+        ball.GetComponent<BallController>().y_force *= screenToNetRatio;
+        Player1.localScale = new Vector3(screenToNetRatio * Player1.localScale.x, screenToNetRatio * Player1.localScale.y, 0f);
+        Player2.localScale = new Vector3(screenToNetRatio * Player2.localScale.x, screenToNetRatio * Player2.localScale.y, 0f);
+        //GetComponent<GameManager>().theSkin.label.fontSize = (int) Mathf.Ceil(GetComponent<GameManager>().theSkin.label.fontSize * screenToNetRatio);
+
+
     }
 }
